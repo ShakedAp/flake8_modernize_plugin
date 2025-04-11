@@ -10,8 +10,8 @@
 
 from __future__ import generator_stop
 
-from cloned_fissix.fissix import fixer_base, fixer_util
-from cloned_fissix.fissix.fixer_util import Call, Name
+from flake8_modernize_plugin.cloned_fissix.fissix import fixer_base, fixer_util
+from flake8_modernize_plugin.cloned_fissix.fissix.fixer_util import Call, Name
 
 
 class FixInputSix(fixer_base.ConditionalFix):

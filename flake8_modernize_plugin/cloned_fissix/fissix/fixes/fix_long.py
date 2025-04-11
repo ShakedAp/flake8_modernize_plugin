@@ -5,8 +5,8 @@
 """
 
 # Local imports
-from cloned_fissix.fissix import fixer_base
-from cloned_fissix.fissix.fixer_util import is_probably_builtin
+from flake8_modernize_plugin.cloned_fissix.fissix import fixer_base
+from flake8_modernize_plugin.cloned_fissix.fissix.fixer_util import is_probably_builtin
 
 
 class FixLong(fixer_base.BaseFix):

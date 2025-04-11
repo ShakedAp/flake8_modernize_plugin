@@ -4,8 +4,8 @@
 import logging
 from unittest import TestCase
 
-from cloned_fissix.fissix import pygram, pytree
-from cloned_fissix.fissix.pgen2 import driver
+from flake8_modernize_plugin.cloned_fissix.fissix import pygram, pytree
+from flake8_modernize_plugin.cloned_fissix.fissix.pgen2 import driver
 
 log = logging.getLogger(__name__)
 

@@ -3,8 +3,8 @@
 
 from __future__ import generator_stop
 
-from cloned_fissix.fissix import fixer_base, fixer_util
-from cloned_fissix.fissix.fixes import fix_xrange
+from flake8_modernize_plugin.cloned_fissix.fissix import fixer_base, fixer_util
+from flake8_modernize_plugin.cloned_fissix.fissix.fixes import fix_xrange
 
 
 class FixXrangeSix(fixer_base.ConditionalFix, fix_xrange.FixXrange):

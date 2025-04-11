@@ -1,6 +1,6 @@
 from __future__ import generator_stop
 
-from cloned_fissix.fissix.fixes import fix_print
+from flake8_modernize_plugin.cloned_fissix.fissix.fixes import fix_print
 
 from .. import utils
 

@@ -3,8 +3,8 @@
 from __future__ import generator_stop
 
 # Local imports
-from cloned_fissix.fissix import fixer_base, fixer_util
-from cloned_fissix.fissix.fixer_util import BlankLine, syms, token
+from flake8_modernize_plugin.cloned_fissix.fissix import fixer_base, fixer_util
+from flake8_modernize_plugin.cloned_fissix.fissix.fixer_util import BlankLine, syms, token
 
 # This is a derived work of Lib/lib2to3/fixes/fix_itertools_imports.py. That file
 # is under the copyright of the Python Software Foundation and licensed

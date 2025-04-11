@@ -9,8 +9,8 @@ import os.path
 from textwrap import dedent
 
 # Local imports
-from cloned_fissix.fissix import pytree, refactor
-from cloned_fissix.fissix.pgen2 import driver as pgen2_driver
+from flake8_modernize_plugin.cloned_fissix.fissix import pytree, refactor
+from flake8_modernize_plugin.cloned_fissix.fissix.pgen2 import driver as pgen2_driver
 
 test_dir = os.path.dirname(__file__)
 proj_dir = os.path.normpath(os.path.join(test_dir, ".."))

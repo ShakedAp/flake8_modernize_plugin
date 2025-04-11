@@ -2,7 +2,7 @@
 import abc
 from typing import Iterable
 
-from flake8_errors_info import MDNErrorInfo
+from flake8_modernize_plugin.flake8_errors_info import MDNErrorInfo
 
 
 def _should_update_error_counter(bases: Iterable[type]) -> bool:
@@ -43,6 +43,7 @@ class MdnCheckerMeta(abc.ABCMeta):
         self.error_number = error_number
         return self
 
+
 class MdnFixer(metaclass=MdnCheckerMeta):
     """
     The base class for each mdn checker.
@@ -63,6 +64,15 @@ class MdnFixer(metaclass=MdnCheckerMeta):
         Returns:
             SIXErrorInfo: The created error info.
         """
+        try:
+            fixer_name = cls.__module__.split("cloned_")[1]
+        except Exception:
+            fixer_name = cls.__module__
+
         return MDNErrorInfo(
-            node.lineno, node.column, cls.error_number, f"error raised by {cls.__module__}", cls
+            node.lineno,
+            node.column,
+            cls.error_number,
+            f"error raised by {fixer_name}",
+            cls,
         )

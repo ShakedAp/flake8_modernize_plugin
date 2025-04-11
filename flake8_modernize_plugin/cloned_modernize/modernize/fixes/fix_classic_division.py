@@ -1,7 +1,7 @@
 from __future__ import generator_stop
 
-from cloned_fissix.fissix import fixer_base, pytree
-from cloned_fissix.fissix.pgen2 import token
+from flake8_modernize_plugin.cloned_fissix.fissix import fixer_base, pytree
+from flake8_modernize_plugin.cloned_fissix.fissix.pgen2 import token
 
 from .. import utils
 

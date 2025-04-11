@@ -4,8 +4,8 @@ Convert use of sys.exitfunc to use the atexit module.
 
 # Author: Benjamin Peterson
 
-from cloned_fissix.fissix import pytree, fixer_base
-from cloned_fissix.fissix.fixer_util import Name, Attr, Call, Comma, Newline, syms
+from flake8_modernize_plugin.cloned_fissix.fissix import pytree, fixer_base
+from flake8_modernize_plugin.cloned_fissix.fissix.fixer_util import Name, Attr, Call, Comma, Newline, syms
 
 
 class FixExitfunc(fixer_base.BaseFix):

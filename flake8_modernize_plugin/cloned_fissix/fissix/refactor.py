@@ -22,8 +22,8 @@ import collections
 from itertools import chain
 
 # Local imports
-from flake8_errors_info import MDNErrorInfo
-from cloned_fissix.fissix.pgen2.parse import ParseError
+from flake8_modernize_plugin.flake8_errors_info import MDNErrorInfo
+from flake8_modernize_plugin.cloned_fissix.fissix.pgen2.parse import ParseError
 from .pgen2 import driver, tokenize, token
 from .fixer_util import find_root
 from . import pytree, pygram

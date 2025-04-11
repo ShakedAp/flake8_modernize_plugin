@@ -3,8 +3,8 @@
 from __future__ import generator_stop
 
 # Local imports
-from cloned_fissix.fissix import fixer_base
-from cloned_fissix.fissix.fixer_util import Call, Name
+from flake8_modernize_plugin.cloned_fissix.fissix import fixer_base
+from flake8_modernize_plugin.cloned_fissix.fissix.fixer_util import Call, Name
 
 bind_warning = "Calls to builtin next() possibly shadowed by global binding"
 

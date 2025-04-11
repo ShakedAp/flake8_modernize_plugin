@@ -25,9 +25,9 @@
 from __future__ import generator_stop
 
 # Local imports
-from cloned_fissix.fissix import fixer_base, fixer_util
-from cloned_fissix.fissix.fixer_util import Call, Comma, Leaf, Name, Node, syms
-from cloned_fissix.fissix.pygram import token
+from flake8_modernize_plugin.cloned_fissix.fissix import fixer_base, fixer_util
+from flake8_modernize_plugin.cloned_fissix.fissix.fixer_util import Call, Comma, Leaf, Name, Node, syms
+from flake8_modernize_plugin.cloned_fissix.fissix.pygram import token
 
 # Author: Jack Diederich, Daniel Neuhäuser
 

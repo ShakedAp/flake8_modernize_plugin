@@ -7,8 +7,8 @@ Makes sure reduce() is imported from the functools module if reduce is
 used in that module.
 """
 
-from cloned_fissix.fissix import fixer_base
-from cloned_fissix.fissix.fixer_util import touch_import
+from flake8_modernize_plugin.cloned_fissix.fissix import fixer_base
+from flake8_modernize_plugin.cloned_fissix.fissix.fixer_util import touch_import
 
 
 class FixReduce(fixer_base.BaseFix):

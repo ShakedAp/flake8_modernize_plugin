@@ -1,8 +1,8 @@
 """ Fixer for imports of itertools.(imap|ifilter|izip|ifilterfalse) """
 
 # Local imports
-from cloned_fissix.fissix import fixer_base
-from cloned_fissix.fissix.fixer_util import BlankLine, syms, token
+from flake8_modernize_plugin.cloned_fissix.fissix import fixer_base
+from flake8_modernize_plugin.cloned_fissix.fissix.fixer_util import BlankLine, syms, token
 
 
 class FixItertoolsImports(fixer_base.BaseFix):

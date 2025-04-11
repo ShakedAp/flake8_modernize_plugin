@@ -3,8 +3,8 @@
 
 from __future__ import generator_stop
 
-from cloned_fissix.fissix import fixer_util
-from cloned_fissix.fissix.fixes import fix_zip
+from flake8_modernize_plugin.cloned_fissix.fissix import fixer_util
+from flake8_modernize_plugin.cloned_fissix.fissix.fixes import fix_zip
 
 
 class FixZip(fix_zip.FixZip):

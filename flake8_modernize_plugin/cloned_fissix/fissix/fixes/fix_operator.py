@@ -12,8 +12,8 @@ operator.irepeat(obj, n)       -> operator.imul(obj, n)
 import collections.abc
 
 # Local imports
-from cloned_fissix.fissix import fixer_base
-from cloned_fissix.fissix.fixer_util import Call, Name, String, touch_import
+from flake8_modernize_plugin.cloned_fissix.fissix import fixer_base
+from flake8_modernize_plugin.cloned_fissix.fissix.fixer_util import Call, Name, String, touch_import
 
 
 def invocation(s):

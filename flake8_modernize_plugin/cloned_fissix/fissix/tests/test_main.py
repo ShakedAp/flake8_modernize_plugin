@@ -11,7 +11,7 @@ import unittest
 
 import pytest
 
-from cloned_fissix.fissix import main
+from flake8_modernize_plugin.cloned_fissix.fissix import main
 
 
 TEST_DATA_DIR = os.path.join(os.path.dirname(__file__), "data")

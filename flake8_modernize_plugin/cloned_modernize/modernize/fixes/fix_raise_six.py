@@ -7,8 +7,8 @@ raise E, V, T -> six.reraise(E, V, T)
 from __future__ import generator_stop
 
 # Local imports
-from cloned_fissix.fissix import fixer_base, fixer_util
-from cloned_fissix.fissix.fixer_util import Call, Comma, Name
+from flake8_modernize_plugin.cloned_fissix.fissix import fixer_base, fixer_util
+from flake8_modernize_plugin.cloned_fissix.fissix.fixer_util import Call, Comma, Name
 
 
 class FixRaiseSix(fixer_base.BaseFix):

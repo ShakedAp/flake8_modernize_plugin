@@ -2,8 +2,8 @@ from __future__ import generator_stop
 
 import re
 
-from cloned_fissix.fissix import fixer_base, fixer_util
-from cloned_fissix.fissix.fixer_util import Call, Name
+from flake8_modernize_plugin.cloned_fissix.fissix import fixer_base, fixer_util
+from flake8_modernize_plugin.cloned_fissix.fissix.fixer_util import Call, Name
 
 _mapping = {"unichr": "chr", "unicode": "str"}
 _literal_re = re.compile("[uU][rR]?[\\'\\\"]")

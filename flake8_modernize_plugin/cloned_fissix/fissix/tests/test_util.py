@@ -4,10 +4,10 @@
 from . import support
 
 # Local imports
-from cloned_fissix.fissix.pytree import Node, Leaf
-from cloned_fissix.fissix import fixer_util
-from cloned_fissix.fissix.fixer_util import Attr, Name, Call, Comma
-from cloned_fissix.fissix.pgen2 import token
+from flake8_modernize_plugin.cloned_fissix.fissix.pytree import Node, Leaf
+from flake8_modernize_plugin.cloned_fissix.fissix import fixer_util
+from flake8_modernize_plugin.cloned_fissix.fissix.fixer_util import Attr, Name, Call, Comma
+from flake8_modernize_plugin.cloned_fissix.fissix.pgen2 import token
 
 
 def parse(code, strip_levels=0):

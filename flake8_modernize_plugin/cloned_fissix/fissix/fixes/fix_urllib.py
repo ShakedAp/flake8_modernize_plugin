@@ -6,8 +6,8 @@
 # Author: Nick Edds
 
 # Local imports
-from cloned_fissix.fissix.fixes.fix_imports import alternates, FixImports
-from cloned_fissix.fissix.fixer_util import (
+from flake8_modernize_plugin.cloned_fissix.fissix.fixes.fix_imports import alternates, FixImports
+from flake8_modernize_plugin.cloned_fissix.fissix.fixer_util import (
     Name,
     Comma,
     FromImport,

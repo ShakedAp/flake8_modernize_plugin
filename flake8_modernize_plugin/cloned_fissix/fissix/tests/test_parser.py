@@ -25,10 +25,10 @@ import unittest
 import pytest
 
 # Local imports
-from cloned_fissix.fissix.pgen2 import driver as pgen2_driver
-from cloned_fissix.fissix.pgen2 import tokenize
-from cloned_fissix.fissix.pgen2.parse import ParseError
-from cloned_fissix.fissix.pygram import python_symbols as syms
+from flake8_modernize_plugin.cloned_fissix.fissix.pgen2 import driver as pgen2_driver
+from flake8_modernize_plugin.cloned_fissix.fissix.pgen2 import tokenize
+from flake8_modernize_plugin.cloned_fissix.fissix.pgen2.parse import ParseError
+from flake8_modernize_plugin.cloned_fissix.fissix.pygram import python_symbols as syms
 
 
 class TestDriver(support.TestCase):
@@ -89,7 +89,7 @@ class TestPgen2Caching(support.TestCase):
                     sys.executable,
                     "-c",
                     """
-from cloned_fissix.fissix.pgen2 import driver as pgen2_driver
+from flake8_modernize_plugin.cloned_fissix.fissix.pgen2 import driver as pgen2_driver
 pgen2_driver.load_grammar(%r, save=True, force=True)
                     """
                     % (grammar_sub_copy,),

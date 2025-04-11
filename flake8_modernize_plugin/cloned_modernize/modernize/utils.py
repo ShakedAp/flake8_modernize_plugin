@@ -1,9 +1,9 @@
 from __future__ import generator_stop
 
-from cloned_fissix.fissix import fixer_util
-from cloned_fissix.fissix.pgen2 import token
-from cloned_fissix.fissix.pygram import python_symbols as syms
-from cloned_fissix.fissix.pytree import Leaf, Node
+from flake8_modernize_plugin.cloned_fissix.fissix import fixer_util
+from flake8_modernize_plugin.cloned_fissix.fissix.pgen2 import token
+from flake8_modernize_plugin.cloned_fissix.fissix.pygram import python_symbols as syms
+from flake8_modernize_plugin.cloned_fissix.fissix.pytree import Leaf, Node
 
 
 def _check_future_import(node):

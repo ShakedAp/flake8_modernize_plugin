@@ -6,7 +6,7 @@
 # Python imports
 import itertools
 
-from mdn_checker_meta import MdnFixer
+from flake8_modernize_plugin.mdn_checker_meta import MdnFixer
 
 # Local imports
 from .patcomp import PatternCompiler

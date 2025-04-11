@@ -17,9 +17,9 @@ import sys
 import logging
 
 # Local imports
-from cloned_fissix.fissix import pytree
-from cloned_fissix.fissix import pgen2
-from cloned_fissix.fissix.pgen2 import driver
+from flake8_modernize_plugin.cloned_fissix.fissix import pytree
+from flake8_modernize_plugin.cloned_fissix.fissix import pgen2
+from flake8_modernize_plugin.cloned_fissix.fissix.pgen2 import driver
 
 logging.basicConfig()
 

@@ -232,7 +232,7 @@ version of ``six`` is installed.
 ``fissix`` fixers
 +++++++++++++++++
 
-Some :doc:`fixers from cloned_fissix.fissix <fissix:fixers>`
+Some :doc:`fixers from flake8_modernize_plugin.cloned_fissix.fissix <fissix:fixers>`
 in Python's standard library are run by default unmodified as their
 transformations are Python 2 compatible.
 

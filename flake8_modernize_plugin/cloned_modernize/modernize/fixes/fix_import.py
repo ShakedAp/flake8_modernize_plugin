@@ -1,7 +1,7 @@
 from __future__ import generator_stop
 
-from cloned_fissix.fissix.fixer_util import syms
-from cloned_fissix.fissix.fixes import fix_import
+from flake8_modernize_plugin.cloned_fissix.fissix.fixer_util import syms
+from flake8_modernize_plugin.cloned_fissix.fissix.fixes import fix_import
 
 from .. import utils
 

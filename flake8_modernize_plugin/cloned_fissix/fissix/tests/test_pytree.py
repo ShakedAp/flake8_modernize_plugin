@@ -12,7 +12,7 @@ especially when debugging a test.
 # Testing imports
 from . import support
 
-from cloned_fissix.fissix import pytree
+from flake8_modernize_plugin.cloned_fissix.fissix import pytree
 
 try:
     sorted

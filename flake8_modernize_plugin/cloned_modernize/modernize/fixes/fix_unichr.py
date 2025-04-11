@@ -1,7 +1,7 @@
 from __future__ import generator_stop
 
-from cloned_fissix.fissix import fixer_base, fixer_util
-from cloned_fissix.fissix.fixer_util import is_probably_builtin
+from flake8_modernize_plugin.cloned_fissix.fissix import fixer_base, fixer_util
+from flake8_modernize_plugin.cloned_fissix.fissix.fixer_util import is_probably_builtin
 
 
 class FixUnichr(fixer_base.ConditionalFix):

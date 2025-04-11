@@ -1,7 +1,7 @@
 from __future__ import generator_stop
 
-from cloned_fissix.fissix import fixer_base
-from cloned_fissix.fissix.fixer_util import Name
+from flake8_modernize_plugin.cloned_fissix.fissix import fixer_base
+from flake8_modernize_plugin.cloned_fissix.fissix.fixer_util import Name
 
 
 class FixFile(fixer_base.BaseFix):

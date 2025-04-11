@@ -16,8 +16,8 @@
 from __future__ import generator_stop
 
 # Local imports
-from cloned_fissix.fissix import fixer_base, fixer_util
-from cloned_fissix.fissix.fixer_util import Name
+from flake8_modernize_plugin.cloned_fissix.fissix import fixer_base, fixer_util
+from flake8_modernize_plugin.cloned_fissix.fissix.fixer_util import Name
 
 
 class FixItertoolsSix(fixer_base.BaseFix):

@@ -11,8 +11,8 @@ import tempfile
 import shutil
 import unittest
 
-from cloned_fissix.fissix import refactor, pygram, fixer_base
-from cloned_fissix.fissix.pgen2 import token
+from flake8_modernize_plugin.cloned_fissix.fissix import refactor, pygram, fixer_base
+from flake8_modernize_plugin.cloned_fissix.fissix.pgen2 import token
 
 
 TEST_DATA_DIR = os.path.join(os.path.dirname(__file__), "data")

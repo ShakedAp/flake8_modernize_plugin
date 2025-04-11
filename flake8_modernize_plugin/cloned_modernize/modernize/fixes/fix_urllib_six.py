@@ -12,7 +12,7 @@
 #     2011, 2012, 2013 Python Software Foundation. All rights reserved.
 from __future__ import generator_stop
 
-from cloned_fissix.fissix.fixer_util import (
+from flake8_modernize_plugin.cloned_fissix.fissix.fixer_util import (
     Comma,
     FromImport,
     Name,
@@ -23,7 +23,7 @@ from cloned_fissix.fissix.fixer_util import (
 )
 
 # Local imports
-from cloned_fissix.fissix.fixes.fix_imports import FixImports, alternates
+from flake8_modernize_plugin.cloned_fissix.fissix.fixes.fix_imports import FixImports, alternates
 
 # Author: Nick Edds
 

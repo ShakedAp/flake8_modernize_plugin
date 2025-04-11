@@ -12,8 +12,8 @@ import optparse
 import os
 import sys
 
-from cloned_fissix.fissix import refactor
-from cloned_fissix.fissix.main import StdoutRefactoringTool, warn
+from flake8_modernize_plugin.cloned_fissix.fissix import refactor
+from flake8_modernize_plugin.cloned_fissix.fissix.main import StdoutRefactoringTool, warn
 
 from . import __version__
 from .fixes import fissix_fix_names, opt_in_fix_names, six_fix_names
@@ -125,7 +125,7 @@ def main(args=None):
         "Useful for enforcing Python 3 compatibility.",
     )
 
-    fixer_pkg = "cloned_modernize.modernize.fixes"
+    fixer_pkg = "flake8_modernize_plugin.cloned_modernize.modernize.fixes"
     avail_fixes = set(refactor.get_fixers_from_package(fixer_pkg))
     avail_fixes.update(fissix_fix_names)
 
@@ -185,12 +185,12 @@ def main(args=None):
 
     # Remove unicode fixers depending on command line options
     if options.six_unicode:
-        unwanted_fixes.add("cloned_modernize.modernize.fixes.fix_unicode_future")
+        unwanted_fixes.add("flake8_modernize_plugin.cloned_modernize.modernize.fixes.fix_unicode_future")
     elif options.future_unicode:
-        unwanted_fixes.add("cloned_modernize.modernize.fixes.fix_unicode")
+        unwanted_fixes.add("flake8_modernize_plugin.cloned_modernize.modernize.fixes.fix_unicode")
     else:
-        unwanted_fixes.add("cloned_modernize.modernize.fixes.fix_unicode")
-        unwanted_fixes.add("cloned_modernize.modernize.fixes.fix_unicode_future")
+        unwanted_fixes.add("flake8_modernize_plugin.cloned_modernize.modernize.fixes.fix_unicode")
+        unwanted_fixes.add("flake8_modernize_plugin.cloned_modernize.modernize.fixes.fix_unicode_future")
 
     if options.no_six:
         unwanted_fixes.update(six_fix_names)

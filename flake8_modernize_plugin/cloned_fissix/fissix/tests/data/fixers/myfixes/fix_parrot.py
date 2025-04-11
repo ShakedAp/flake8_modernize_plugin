@@ -1,5 +1,5 @@
-from cloned_fissix.fissix.fixer_base import BaseFix
-from cloned_fissix.fissix.fixer_util import Name
+from flake8_modernize_plugin.cloned_fissix.fissix.fixer_base import BaseFix
+from flake8_modernize_plugin.cloned_fissix.fissix.fixer_util import Name
 
 
 class FixParrot(BaseFix):

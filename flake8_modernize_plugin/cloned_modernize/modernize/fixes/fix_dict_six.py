@@ -5,8 +5,8 @@ Fixer for iterkeys() -> six.iterkeys(), and similarly for iteritems and itervalu
 from __future__ import generator_stop
 
 # Local imports
-from cloned_fissix.fissix import fixer_util, pytree
-from cloned_fissix.fissix.fixes import fix_dict
+from flake8_modernize_plugin.cloned_fissix.fissix import fixer_util, pytree
+from flake8_modernize_plugin.cloned_fissix.fissix.fixes import fix_dict
 
 
 class FixDictSix(fix_dict.FixDict):
@@ -15,7 +15,7 @@ class FixDictSix(fix_dict.FixDict):
         # Make sure six is imported.
         fixer_util.touch_import(None, "six", node)
 
-        # Copy of self.transform() from cloned_fissix.fissix.fix_dict with some changes to
+        # Copy of self.transform() from flake8_modernize_plugin.cloned_fissix.fissix.fix_dict with some changes to
         # use the six.* methods.
 
         head = results["head"]
