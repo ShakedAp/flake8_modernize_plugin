@@ -376,19 +376,19 @@ class RefactoringTool(object):
         if "print_function" not in features:
             self.flake8_errors.append(
                 MDNErrorInfo(
-                    0, 0, 800, f"Missing __future__ print_function import", type(self)
+                    0, 0, 800, f"Missing from __future__ import print_function", type(self)
                 )
             )
         if "absolute_import" not in features:
             self.flake8_errors.append(
                 MDNErrorInfo(
-                    0, 0, 801, f"Missing __future__ absolute_import import", type(self)
+                    0, 0, 801, f"Missing from __future__ import absolute_import", type(self)
                 )
             )
         if "division" not in features:
             self.flake8_errors.append(
                 MDNErrorInfo(
-                    0, 0, 802, f"Missing __future__ division import", type(self)
+                    0, 0, 802, f"Missing from __future__ import division", type(self)
                 )
             )
 
@@ -462,6 +462,7 @@ class RefactoringTool(object):
         # obtain a set of candidate nodes
         match_set = self.BM.run(tree.leaves())
 
+        was_changed = False
         while any(match_set.values()):
             for fixer in self.BM.fixers:
                 if fixer in match_set and match_set[fixer]:
@@ -490,12 +491,21 @@ class RefactoringTool(object):
 
                         results = fixer.match(node)
 
-                        was_changed = True
                         if results:
+                            node_before = node.clone()
+                            try:
+                                node_before.lineno = node.lineno
+                                node_before.column = node.column
+                            except AttributeError:
+                                continue
+
                             new = fixer.transform(node, results)
                             if tree.was_changed or new is not None:
-                                self.flake8_errors.append(fixer._create_mdn_error(node, new))
+                                new_node = node if node.was_changed and new is not None else new
+                                self.flake8_errors.append(fixer._create_mdn_error(node_before, new_node))
                                 tree.was_changed = False
+                                was_changed = True
+
                             if new is not None:
                                 node.replace(new)
                                 # new.fixers_applied.append(fixer)

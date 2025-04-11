@@ -44,6 +44,11 @@ class MdnCheckerMeta(abc.ABCMeta):
         return self
 
 
+def _get_error_representation(node):
+    node_str = str(node).strip()
+    error_represenation = node_str.split('\n')[0]
+    return error_represenation
+
 class MdnFixer(metaclass=MdnCheckerMeta):
     """
     The base class for each mdn checker.
@@ -75,7 +80,7 @@ class MdnFixer(metaclass=MdnCheckerMeta):
                 node.lineno,
                 node.column,
                 cls.error_number,
-                f"Fixer {fixer_name}: Use  {new_node}  instead of  {node} ",
+                f"Fixer {fixer_name}: Use  {_get_error_representation(new_node)}  instead of  {_get_error_representation(node)}. Use modernize for futher details",
                 cls,
             )
         else:
@@ -83,6 +88,6 @@ class MdnFixer(metaclass=MdnCheckerMeta):
                 node.lineno,
                 node.column,
                 cls.error_number,
-                f"Fixer {fixer_name} error that couldn't recognized (e.g. import). User modernize for futher details",
+                f"Fixer {fixer_name} error that couldn't be shown (other lines changed). Use modernize for futher details",
                 cls,
             )
