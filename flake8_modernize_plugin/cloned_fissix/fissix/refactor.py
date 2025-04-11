@@ -493,7 +493,7 @@ class RefactoringTool(object):
                         was_changed = True
                         if results:
                             new = fixer.transform(node, results)
-                            if tree.was_changed:
+                            if tree.was_changed or new is not None:
                                 self.flake8_errors.append(fixer._create_mdn_error(node, new))
                                 tree.was_changed = False
                             if new is not None:
