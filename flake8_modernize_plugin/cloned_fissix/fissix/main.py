@@ -140,7 +140,7 @@ class StdoutRefactoringTool(refactor.MultiprocessRefactoringTool):
 
 
 def warn(msg):
-    if not logging.getLogger().isEnabledFor(logging.Info):
+    if not logging.getLogger().isEnabledFor(logging.INFO):
         return
     print("WARNING: %s" % (msg,), file=sys.stderr)
 
