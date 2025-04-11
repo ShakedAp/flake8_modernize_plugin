@@ -32,6 +32,7 @@ class ModernizeCompatibilityPlugin:
 
         rt = RefactoringTool(sorted(avail_fixes), options=options)
 
-        rt.refactor_string(''.join(self._lines), self._filename)
+        data = ''.join(self._lines)  + '\n'
+        rt.refactor_string(data, self._filename)
 
         yield from rt.flake8_errors
