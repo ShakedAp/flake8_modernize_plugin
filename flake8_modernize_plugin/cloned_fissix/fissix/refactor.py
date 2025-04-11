@@ -492,7 +492,7 @@ class RefactoringTool(object):
                         if results:
                             new = fixer.transform(node, results)
                             if new is not None:
-                                self.flake8_errors.append(fixer._create_mdn_error(node))
+                                self.flake8_errors.append(fixer._create_mdn_error(node, new))
                                 node.replace(new)
                                 # new.fixers_applied.append(fixer)
                                 for node in new.post_order():

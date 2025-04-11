@@ -53,13 +53,14 @@ class MdnFixer(metaclass=MdnCheckerMeta):
     """
 
     @classmethod
-    def _create_mdn_error(cls, node) -> MDNErrorInfo:
+    def _create_mdn_error(cls, node, new_node) -> MDNErrorInfo:
         """create the given error info based on the given node.
         This uses the defined error_message, and the automatically given error_number.
         If this method is not used, make sure to use those class member.
 
         Args:
             node: fissix Node or fissix Leaf
+            new_node: fissix Node or fissix Leaf
 
         Returns:
             SIXErrorInfo: The created error info.
@@ -73,6 +74,6 @@ class MdnFixer(metaclass=MdnCheckerMeta):
             node.lineno,
             node.column,
             cls.error_number,
-            f"error raised by {fixer_name}",
+            f"Fixer {fixer_name}: Use  {new_node}  instead of  {node} ",
             cls,
         )
