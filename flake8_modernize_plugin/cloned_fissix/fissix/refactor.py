@@ -16,6 +16,7 @@ import io
 import os
 import pkgutil
 import sys
+import copy
 import logging
 import operator
 import collections
@@ -490,8 +491,10 @@ class RefactoringTool(object):
                         results = fixer.match(node)
 
                         if results:
+                            before_tree = copy.deepcopy(tree)
                             new = fixer.transform(node, results)
-                            self.flake8_errors.append(fixer._create_mdn_error(node, new))
+                            if before_tree != tree:
+                                self.flake8_errors.append(fixer._create_mdn_error(node, new))
                             if new is not None:
                                 node.replace(new)
                                 # new.fixers_applied.append(fixer)
