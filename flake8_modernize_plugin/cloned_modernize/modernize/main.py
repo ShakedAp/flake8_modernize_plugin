@@ -185,12 +185,12 @@ def main(args=None):
 
     # Remove unicode fixers depending on command line options
     if options.six_unicode:
-        unwanted_fixes.add("modernize.fixes.fix_unicode_future")
+        unwanted_fixes.add("cloned_modernize.modernize.fixes.fix_unicode_future")
     elif options.future_unicode:
-        unwanted_fixes.add("modernize.fixes.fix_unicode")
+        unwanted_fixes.add("cloned_modernize.modernize.fixes.fix_unicode")
     else:
-        unwanted_fixes.add("modernize.fixes.fix_unicode")
-        unwanted_fixes.add("modernize.fixes.fix_unicode_future")
+        unwanted_fixes.add("cloned_modernize.modernize.fixes.fix_unicode")
+        unwanted_fixes.add("cloned_modernize.modernize.fixes.fix_unicode_future")
 
     if options.no_six:
         unwanted_fixes.update(six_fix_names)

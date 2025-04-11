@@ -30,27 +30,27 @@ fissix_fix_names = {
 
 # fixes that involve using six
 six_fix_names = {
-    "modernize.fixes.fix_basestring",
-    "modernize.fixes.fix_dict_six",
-    "modernize.fixes.fix_filter",
-    "modernize.fixes.fix_imports_six",
-    "modernize.fixes.fix_itertools_six",
-    "modernize.fixes.fix_itertools_imports_six",
-    "modernize.fixes.fix_input_six",
-    "modernize.fixes.fix_int_long_tuple",
-    "modernize.fixes.fix_map",
-    "modernize.fixes.fix_metaclass",
-    "modernize.fixes.fix_raise_six",
-    "modernize.fixes.fix_unicode",
-    "modernize.fixes.fix_unicode_type",
-    "modernize.fixes.fix_urllib_six",
-    "modernize.fixes.fix_unichr",
-    "modernize.fixes.fix_xrange_six",
-    "modernize.fixes.fix_zip",
+    "cloned_modernize.modernize.fixes.fix_basestring",
+    "cloned_modernize.modernize.fixes.fix_dict_six",
+    "cloned_modernize.modernize.fixes.fix_filter",
+    "cloned_modernize.modernize.fixes.fix_imports_six",
+    "cloned_modernize.modernize.fixes.fix_itertools_six",
+    "cloned_modernize.modernize.fixes.fix_itertools_imports_six",
+    "cloned_modernize.modernize.fixes.fix_input_six",
+    "cloned_modernize.modernize.fixes.fix_int_long_tuple",
+    "cloned_modernize.modernize.fixes.fix_map",
+    "cloned_modernize.modernize.fixes.fix_metaclass",
+    "cloned_modernize.modernize.fixes.fix_raise_six",
+    "cloned_modernize.modernize.fixes.fix_unicode",
+    "cloned_modernize.modernize.fixes.fix_unicode_type",
+    "cloned_modernize.modernize.fixes.fix_urllib_six",
+    "cloned_modernize.modernize.fixes.fix_unichr",
+    "cloned_modernize.modernize.fixes.fix_xrange_six",
+    "cloned_modernize.modernize.fixes.fix_zip",
 }
 
 # Fixes that are opt-in only.
 opt_in_fix_names = {
-    "modernize.fixes.fix_classic_division",
-    "modernize.fixes.fix_open",
+    "cloned_modernize.modernize.fixes.fix_classic_division",
+    "cloned_modernize.modernize.fixes.fix_open",
 }
