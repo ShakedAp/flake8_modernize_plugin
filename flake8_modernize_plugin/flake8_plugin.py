@@ -27,8 +27,9 @@ class ModernizeCompatibilityPlugin:
         avail_fixes.update(fissix_fix_names)
         avail_fixes.update(opt_in_fix_names)
         avail_fixes.update(six_fix_names)
-        # avail_fixes.add("flake8_modernize_plugin.cloned_modernize.modernize.fixes.fix_unicode")
-        # avail_fixes.add("flake8_modernize_plugin.cloned_modernize.modernize.fixes.fix_unicode_future")
+        
+        avail_fixes.remove("flake8_modernize_plugin.cloned_modernize.modernize.fixes.fix_unicode")
+        avail_fixes.remove("flake8_modernize_plugin.cloned_modernize.modernize.fixes.fix_unicode_future")
 
         rt = RefactoringTool(sorted(avail_fixes), options=options)
 

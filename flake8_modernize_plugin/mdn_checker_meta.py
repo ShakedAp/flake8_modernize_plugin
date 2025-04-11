@@ -70,10 +70,19 @@ class MdnFixer(metaclass=MdnCheckerMeta):
         except Exception:
             fixer_name = cls.__module__
 
-        return MDNErrorInfo(
-            node.lineno,
-            node.column,
-            cls.error_number,
-            f"Fixer {fixer_name}: Use  {new_node}  instead of  {node} ",
-            cls,
-        )
+        if new_node:
+            return MDNErrorInfo(
+                node.lineno,
+                node.column,
+                cls.error_number,
+                f"Fixer {fixer_name}: Use  {new_node}  instead of  {node} ",
+                cls,
+            )
+        else:
+            return MDNErrorInfo(
+                node.lineno,
+                node.column,
+                cls.error_number,
+                f"Fixer {fixer_name} error that couldn't recognized (e.g. import). User modernize for futher details",
+                cls,
+            )
