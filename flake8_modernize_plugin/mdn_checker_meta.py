@@ -88,6 +88,6 @@ class MdnFixer(metaclass=MdnCheckerMeta):
                 node.lineno,
                 node.column,
                 cls.error_number,
-                f"Fixer {fixer_name} error that couldn't be shown (other lines changed). Use modernize for futher details",
+                f"Fixer {fixer_name} update that couldn't be shown (other lines changed). Use modernize for futher details",
                 cls,
             )
