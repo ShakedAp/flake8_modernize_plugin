@@ -1,0 +1,45 @@
+[flake8]
+select = 
+    MDN,
+    # Indentation
+    E101,
+    E111,
+    E112,
+    E113,
+    E117,
+    W191
+    # Statement
+    E701,
+    E702,
+    E703,
+    E704,
+    # Runtime
+    E901,
+    E902,
+    E999,
+    # Deprecation
+    W6,
+    # Imports
+    F402,
+    F404,
+    F406,
+    F407,
+    # Formatting
+    F501,
+    F521,
+    # Dictionaries
+    F601,
+    F602,
+    F632,
+    F633,
+    F812,
+    F821,
+    F822,
+    F831,
+    F901
+ignore = 
+
+[flake8:local-plugins]
+extension = 
+    MDN = flake8_modernize_plugin.flake8_plugin:ModernizeCompatibilityPlugin
+paths = ./
