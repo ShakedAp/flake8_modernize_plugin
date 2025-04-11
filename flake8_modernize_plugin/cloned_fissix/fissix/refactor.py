@@ -490,11 +490,12 @@ class RefactoringTool(object):
 
                         results = fixer.match(node)
 
+                        was_changed = True
                         if results:
-                            before_tree = copy.deepcopy(tree)
                             new = fixer.transform(node, results)
-                            if before_tree != tree:
+                            if tree.was_changed:
                                 self.flake8_errors.append(fixer._create_mdn_error(node, new))
+                                tree.was_changed = False
                             if new is not None:
                                 node.replace(new)
                                 # new.fixers_applied.append(fixer)
@@ -516,6 +517,7 @@ class RefactoringTool(object):
 
         for fixer in chain(self.pre_order, self.post_order):
             fixer.finish_tree(tree, name)
+        tree.was_changed = was_changed
         return tree.was_changed
 
     def traverse_by(self, fixers, traversal):
