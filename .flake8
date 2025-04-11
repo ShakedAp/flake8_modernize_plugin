@@ -38,8 +38,3 @@ select =
     F831,
     F901
 ignore = 
-
-[flake8:local-plugins]
-extension = 
-    MDN = flake8_modernize_plugin.flake8_plugin:ModernizeCompatibilityPlugin
-paths = ./

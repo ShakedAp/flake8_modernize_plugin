@@ -371,6 +371,26 @@ class RefactoringTool(object):
             else:
                 self.log_debug("No changes in %s", filename)
 
+    def _check_future_imports(self, features):
+        if "print_function" not in features:
+            self.flake8_errors.append(
+                MDNErrorInfo(
+                    0, 0, 800, f"Missing __future__ print_function import", type(self)
+                )
+            )
+        if "absolute_import" not in features:
+            self.flake8_errors.append(
+                MDNErrorInfo(
+                    0, 0, 801, f"Missing __future__ absolute_import import", type(self)
+                )
+            )
+        if "division" not in features:
+            self.flake8_errors.append(
+                MDNErrorInfo(
+                    0, 0, 802, f"Missing __future__ division import", type(self)
+                )
+            )
+
     def refactor_string(self, data, name):
         """Refactor a given input string.
 
@@ -385,6 +405,8 @@ class RefactoringTool(object):
         features = _detect_future_features(data)
         if "print_function" in features:
             self.driver.grammar = pygram.python_grammar_no_print_statement
+        self._check_future_imports(features)
+
         try:
             tree = self.driver.parse_string(data)
         except Exception as err:
