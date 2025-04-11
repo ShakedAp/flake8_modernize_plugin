@@ -9,7 +9,7 @@ if __name__ == '__main__':
     logging.basicConfig(format="%(name)s: %(message)s", level=logging.ERROR)
 
     options = {
-        "print_function": True,
+        "print_function": False,
         "exec_function": True,
         "write_unchanged_files": False
     }
@@ -24,6 +24,7 @@ if __name__ == '__main__':
 
     rt = RefactoringTool(sorted(avail_fixes), options=options)
 
-    rt.refactor_file('test.py')
+    rt.refactor(['.'])
+    print(rt.flake8_errors)
 
     return_code = int(bool(rt.errors))

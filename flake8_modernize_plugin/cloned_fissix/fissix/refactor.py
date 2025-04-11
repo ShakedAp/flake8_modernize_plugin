@@ -22,6 +22,8 @@ import collections
 from itertools import chain
 
 # Local imports
+from flake8_errors_info import MDNErrorInfo
+from cloned_fissix.fissix.pgen2.parse import ParseError
 from .pgen2 import driver, tokenize, token
 from .fixer_util import find_root
 from . import pytree, pygram
@@ -193,6 +195,7 @@ class RefactoringTool(object):
         # and only if the refactor method's write parameter was True.
         self.write_unchanged_files = self.options.get("write_unchanged_files")
         self.errors = []
+        self.flake8_errors = []
         self.logger = logging.getLogger("RefactoringTool")
         self.fixer_log = []
         self.wrote = False
@@ -265,7 +268,24 @@ class RefactoringTool(object):
 
     def log_error(self, msg, *args, **kwds):
         """Called when an error occurs."""
-        raise
+        # For better error messages.
+        lineno, column = 0, 0
+        try:
+            error_msg = msg % args
+        except Exception:
+            error_msg = msg
+        try:
+            for arg in args:
+                if isinstance(arg, ParseError):
+                    lineno = arg.context[1][0] if isinstance(arg.context[1][0], int) else 0
+                    column = arg.context[1][1] if isinstance(arg.context[1][1], int)  else 0
+        except Exception:
+            lineno, column = 0, 0
+
+        self.errors.append((msg, args, kwds))
+        self.flake8_errors.append(MDNErrorInfo(
+            lineno, column, 999, f"Error Occured - {error_msg}", type(self)
+        ))
 
     def log_message(self, msg, *args):
         """Hook to log a message."""
@@ -450,7 +470,7 @@ class RefactoringTool(object):
                         if results:
                             new = fixer.transform(node, results)
                             if new is not None:
-                                print(f"{node.lineno}, {node.column} need a change - by {fixer.__module__}")
+                                self.flake8_errors.append(fixer._create_mdn_error(node))
                                 node.replace(new)
                                 # new.fixers_applied.append(fixer)
                                 for node in new.post_order():

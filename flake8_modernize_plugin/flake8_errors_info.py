@@ -16,3 +16,23 @@ class Flake8ASTErrorInfo(NamedTuple):
     offset: int
     msg: str
     flake_cls: type
+
+
+class MDNErrorInfo(Flake8ASTErrorInfo):
+    """
+    modernize_compatibility_plugin Error Info.
+    It adds the MDN prefix, and allows for requires to specify the error_number.
+    """
+
+    error_prefix = "MDN"
+
+    def __new__(
+        cls,
+        line_number: int,
+        offset: int,
+        error_number: int,
+        error_message: str,
+        flake_cls: type,
+    ):
+        msg = f"{cls.error_prefix}{error_number:03} {error_message}"
+        return super().__new__(cls, line_number, offset, msg, flake_cls)

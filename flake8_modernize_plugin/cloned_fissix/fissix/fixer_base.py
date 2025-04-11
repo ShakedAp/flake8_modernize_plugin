@@ -6,13 +6,15 @@
 # Python imports
 import itertools
 
+from mdn_checker_meta import MdnFixer
+
 # Local imports
 from .patcomp import PatternCompiler
 from . import pygram
 from .fixer_util import does_tree_import
 
 
-class BaseFix(object):
+class BaseFix(MdnFixer):
     """Optional base class for fixers.
 
     The subclass name must be FixFooBar where FooBar is the result of
