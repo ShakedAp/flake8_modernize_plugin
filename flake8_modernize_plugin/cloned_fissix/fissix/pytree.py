@@ -226,6 +226,7 @@ class Node(Base):
         if context is not None:
             self._prefix, (self.lineno, self.column) = context
         else:
+            self._prefix = ''
             self.lineno, self.column = 0, 0
         self.type = type
         self.children = list(children)
@@ -267,6 +268,7 @@ class Node(Base):
         return Node(
             self.type,
             [ch.clone() for ch in self.children],
+            context=(self._prefix, (self.lineno, self.column)),
             fixers_applied=self.fixers_applied,
         )
 
@@ -344,6 +346,7 @@ class Leaf(Base):
         if context is not None:
             self._prefix, (self.lineno, self.column) = context
         else:
+            self._prefix = ''
             self.lineno, self.column = 0, 0
         self.type = type
         self.value = value

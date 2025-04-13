@@ -445,7 +445,6 @@ class RefactoringTool(object):
             children_ids = {id(child) for child in tree.children}
             new_node = original_transform(node, results)
 
-
             for child in tree.children:
                 if id(child) not in children_ids:
                     self.flake8_errors.append(fixer._create_added_mdn_error(node, child))
