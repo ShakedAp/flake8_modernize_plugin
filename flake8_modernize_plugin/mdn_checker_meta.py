@@ -68,26 +68,69 @@ class MdnFixer(metaclass=MdnCheckerMeta):
             new_node: fissix Node or fissix Leaf
 
         Returns:
-            SIXErrorInfo: The created error info.
+            MDNErrorInfo: The created error info.
         """
         try:
             fixer_name = cls.__module__.split("cloned_")[1]
         except Exception:
             fixer_name = cls.__module__
 
-        if new_node:
-            return MDNErrorInfo(
-                node.lineno,
-                node.column,
-                cls.error_number,
-                f"Fixer {fixer_name}: Use  {_get_error_representation(new_node)}  instead of  {_get_error_representation(node)}. Use modernize for futher details",
-                cls,
-            )
-        else:
-            return MDNErrorInfo(
-                node.lineno,
-                node.column,
-                cls.error_number,
-                f"Fixer {fixer_name} error that couldn't be shown (other lines changed). Use modernize for futher details",
-                cls,
-            )
+        return MDNErrorInfo(
+            node.lineno,
+            node.column,
+            cls.error_number,
+            f"Fixer {fixer_name}: Use  {_get_error_representation(new_node)}  instead of  {_get_error_representation(node)}. See modernize for futher details",
+            cls,
+        )
+
+    @classmethod
+    def _create_unknown_mdn_error(cls, node) -> MDNErrorInfo:
+        """create the given error info based on the given node.
+        This uses the defined error_message, and the automatically given error_number.
+        If this method is not used, make sure to use those class member.
+
+        Args:
+            node: fissix Node or fissix Leaf
+
+        Returns:
+            MDNErrorInfo: The created error info.
+        """
+        try:
+            fixer_name = cls.__module__.split("cloned_")[1]
+        except Exception:
+            fixer_name = cls.__module__
+
+        return MDNErrorInfo(
+            node.lineno,
+            node.column,
+            cls.error_number,
+            f"Fixer {fixer_name} error that couldn't be shown (other lines changed). See modernize for futher details",
+            cls,
+        )
+
+
+    @classmethod
+    def _create_added_mdn_error(cls, node, added_node) -> MDNErrorInfo:
+        """create the given error info based on the given node.
+        This uses the defined error_message, and the automatically given error_number.
+        If this method is not used, make sure to use those class member.
+
+        Args:
+            node: fissix Node or fissix Leaf
+            added_node: fissix Node or fissix Leaf
+
+        Returns:
+            MDNErrorInfo: The created error info.
+        """
+        try:
+            fixer_name = cls.__module__.split("cloned_")[1]
+        except Exception:
+            fixer_name = cls.__module__
+
+        return MDNErrorInfo(
+            node.lineno,
+            node.column,
+            cls.error_number,
+            f"Fixer {fixer_name}: Add  {_get_error_representation(added_node)}. See modernize for futher details",
+            cls,
+        )

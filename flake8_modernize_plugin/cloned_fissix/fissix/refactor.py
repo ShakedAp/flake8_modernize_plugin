@@ -436,6 +436,34 @@ class RefactoringTool(object):
             else:
                 self.log_debug("No changes in stdin")
 
+    def _wrap_fixer_transform(self, fixer, tree):
+        original_transform = fixer.transform
+
+        def _transform(node, results):
+            found_error = False
+            node_before = node.clone()
+            children_ids = {id(child) for child in tree.children}
+            new_node = original_transform(node, results)
+
+
+            for child in tree.children:
+                if id(child) not in children_ids:
+                    self.flake8_errors.append(fixer._create_added_mdn_error(node, child))
+                    found_error = True
+
+            if new_node is not None:
+                self.flake8_errors.append(fixer._create_mdn_error(node, new_node))
+            elif node != node_before:
+                self.flake8_errors.append(fixer._create_mdn_error(node_before, node))
+            elif tree.was_changed and not found_error:
+                self.flake8_errors.append(fixer._create_unknown_mdn_error(node))
+                tree.was_changed = False
+
+            return new_node
+
+        fixer.transform = _transform
+
+
     def refactor_tree(self, tree, name):
         """Refactors a parse tree (modifying the tree in place).
 
@@ -454,6 +482,7 @@ class RefactoringTool(object):
 
         for fixer in chain(self.pre_order, self.post_order):
             fixer.start_tree(tree, name)
+            self._wrap_fixer_transform(fixer, tree)
 
         # use traditional matching for the incompatible fixers
         self.traverse_by(self.bmi_pre_order_heads, tree.pre_order())
@@ -462,7 +491,6 @@ class RefactoringTool(object):
         # obtain a set of candidate nodes
         match_set = self.BM.run(tree.leaves())
 
-        was_changed = False
         while any(match_set.values()):
             for fixer in self.BM.fixers:
                 if fixer in match_set and match_set[fixer]:
@@ -492,20 +520,7 @@ class RefactoringTool(object):
                         results = fixer.match(node)
 
                         if results:
-                            node_before = node.clone()
-                            try:
-                                node_before.lineno = node.lineno
-                                node_before.column = node.column
-                            except AttributeError:
-                                continue
-
                             new = fixer.transform(node, results)
-                            if tree.was_changed or new is not None:
-                                new_node = node if node.was_changed and new is not None else new
-                                self.flake8_errors.append(fixer._create_mdn_error(node_before, new_node))
-                                tree.was_changed = False
-                                was_changed = True
-
                             if new is not None:
                                 node.replace(new)
                                 # new.fixers_applied.append(fixer)
@@ -527,7 +542,6 @@ class RefactoringTool(object):
 
         for fixer in chain(self.pre_order, self.post_order):
             fixer.finish_tree(tree, name)
-        tree.was_changed = was_changed
         return tree.was_changed
 
     def traverse_by(self, fixers, traversal):

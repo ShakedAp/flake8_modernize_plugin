@@ -225,6 +225,8 @@ class Node(Base):
         assert type >= 256, type
         if context is not None:
             self._prefix, (self.lineno, self.column) = context
+        else:
+            self.lineno, self.column = 0, 0
         self.type = type
         self.children = list(children)
         for ch in self.children:
@@ -341,6 +343,8 @@ class Leaf(Base):
         assert 0 <= type < 256, type
         if context is not None:
             self._prefix, (self.lineno, self.column) = context
+        else:
+            self.lineno, self.column = 0, 0
         self.type = type
         self.value = value
         if prefix is not None:
