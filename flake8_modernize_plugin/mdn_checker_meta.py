@@ -46,7 +46,8 @@ class MdnCheckerMeta(abc.ABCMeta):
 
 def _get_error_representation(node):
     node_str = str(node).strip()
-    error_represenation = node_str.split('\n')[0]
+    str_arr = [elem for elem in node_str.split('\n') if not elem.strip().startswith('#')]
+    error_represenation = str_arr[0]
     return error_represenation
 
 class MdnFixer(metaclass=MdnCheckerMeta):
