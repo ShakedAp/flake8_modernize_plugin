@@ -442,6 +442,9 @@ class RefactoringTool(object):
         def _transform(node, results):
             found_error = False
             node_before = node.clone()
+            was_changed = tree.was_changed
+            tree.was_changed = False
+
             children_ids = {id(child) for child in tree.children}
             new_node = original_transform(node, results)
 
@@ -456,8 +459,8 @@ class RefactoringTool(object):
                 self.flake8_errors.append(fixer._create_mdn_error(node_before, node))
             elif tree.was_changed and not found_error:
                 self.flake8_errors.append(fixer._create_unknown_mdn_error(node))
-                tree.was_changed = False
 
+            tree.was_changed = was_changed
             return new_node
 
         fixer.transform = _transform
