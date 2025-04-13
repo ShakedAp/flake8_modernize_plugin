@@ -30,6 +30,9 @@ class ModernizeCompatibilityPlugin:
         
         avail_fixes.remove("flake8_modernize_plugin.cloned_modernize.modernize.fixes.fix_unicode")
         avail_fixes.remove("flake8_modernize_plugin.cloned_modernize.modernize.fixes.fix_unicode_future")
+        avail_fixes.remove("flake8_modernize_plugin.cloned_fissix.fissix.fixes.fix_idioms")
+        avail_fixes.remove("flake8_modernize_plugin.cloned_fissix.fissix.fixes.fix_set_literal")
+        avail_fixes.remove("flake8_modernize_plugin.cloned_fissix.fissix.fixes.fix_ws_comma")
 
         rt = RefactoringTool(sorted(avail_fixes), options=options)
 
