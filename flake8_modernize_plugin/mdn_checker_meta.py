@@ -79,7 +79,7 @@ class MdnFixer(metaclass=MdnCheckerMeta):
             node.lineno,
             node.column,
             cls.error_number,
-            f"Fixer {fixer_name}: Use  {_get_error_representation(new_node)} instead of {_get_error_representation(node)}. See modernize for futher details",
+            f"Fixer {fixer_name}: Use {_get_error_representation(new_node)} instead of {_get_error_representation(node)}. See modernize for futher details",
             cls,
         )
 
